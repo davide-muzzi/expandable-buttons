@@ -30,5 +30,13 @@
     {
         "label": "Button 8",
         "description": "Placeholder description for Button 8."
+    },
+    {
+        "label": "Button 9",
+        "description": "Placeholder description for Button 9."
+    },
+    {
+        "label": "Button 10",
+        "description": "Placeholder description for Button 10."
     }
 ]
