@@ -75,7 +75,7 @@ class ExpandableButton(QWidget):
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Expandable Buttons Example")
+        self.setWindowTitle("Expandable Buttons Example") # Change window title here
         self.setFixedSize(1000, 700)
         self.setStyleSheet("background-color: #1e1e1e;")  # Change main window background color here  # Change window size here
 
