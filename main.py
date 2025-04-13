@@ -42,9 +42,14 @@ class ExpandableButton(QWidget):
         if not self.expanded:
             self.parent.collapse_all_others(self)
         self.expanded = not self.expanded
+
+        # Calculate content height
+        doc_height = self.desc_box.document().size().height() + 10  # small buffer
+        target_height = int(doc_height)
+
         if self.expanded:
             self.animation.setStartValue(self.desc_box.maximumHeight())
-            self.animation.setEndValue(120)
+            self.animation.setEndValue(target_height)
         else:
             self.animation.setStartValue(self.desc_box.maximumHeight())
             self.animation.setEndValue(0)
