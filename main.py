@@ -16,7 +16,7 @@ class ExpandableButton(QWidget):
 
         self.button = QPushButton(label)
         self.button.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
-        self.button.setFixedHeight(40)
+        self.button.setFixedHeight(40)  # Change button height here
         self.button.clicked.connect(self.toggle_description)
 
         self.desc_box = QTextEdit(description)
@@ -27,7 +27,7 @@ class ExpandableButton(QWidget):
         self.desc_box.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
 
         self.animation = QPropertyAnimation(self.desc_box, b"maximumHeight")
-        self.animation.setDuration(250)
+        self.animation.setDuration(250)  # Adjust animation speed here (ms)
         self.animation.setEasingCurve(QEasingCurve.Type.InOutCubic)
         self.animation.finished.connect(self.cleanup_after_animation)
 
@@ -43,8 +43,7 @@ class ExpandableButton(QWidget):
             self.parent.collapse_all_others(self)
         self.expanded = not self.expanded
 
-        # Calculate content height
-        doc_height = self.desc_box.document().size().height() + 10  # small buffer
+        doc_height = self.desc_box.document().size().height() + 10  # Change buffer here if needed
         target_height = int(doc_height)
 
         if self.expanded:
@@ -71,15 +70,15 @@ class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Expandable Buttons Example")
-        self.setFixedSize(1000, 700)
+        self.setFixedSize(1000, 700)  # Change window size here
 
         headline = QLabel("Headline")
-        headline.setStyleSheet("font-size: 24px; font-weight: bold;")
+        headline.setStyleSheet("font-size: 24px; font-weight: bold;")  # Change font size/weight here
         headline.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         intro_text = QLabel("""
         Et totam earum ut soluta accusantium id veritatis recusandae nam voluptatem nescuint... (shortened for brevity)
-        """)
+        """)  # Change placeholder text here
         intro_text.setWordWrap(True)
 
         self.button_container = QVBoxLayout()
@@ -101,7 +100,7 @@ class MainWindow(QWidget):
         self.load_buttons()
 
     def load_buttons(self):
-        json_path = os.path.join(os.path.dirname(__file__), "buttons.json")
+        json_path = os.path.join(os.path.dirname(__file__), "buttons.json")  # Update file name/path here if needed
         with open(json_path, "r", encoding="utf-8") as f:
             data = json.load(f)
 
