@@ -17,9 +17,11 @@ class ExpandableButton(QWidget):
         self.button = QPushButton(label)
         self.button.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
         self.button.setFixedHeight(40)  # Change button height here
+        self.button.setStyleSheet("font-size: 16px;")  # Change button text font size here
         self.button.clicked.connect(self.toggle_description)
 
         self.desc_box = QTextEdit(description)
+        self.desc_box.setStyleSheet("font-size: 14px;")  # Change description font size here
         self.desc_box.setReadOnly(True)
         self.desc_box.setMaximumHeight(0)
         self.desc_box.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
@@ -76,9 +78,8 @@ class MainWindow(QWidget):
         headline.setStyleSheet("font-size: 24px; font-weight: bold;")  # Change font size/weight here
         headline.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        intro_text = QLabel("""
-        Et totam earum ut soluta accusantium id veritatis recusandae nam voluptatem nescuint... (shortened for brevity)
-        """)  # Change placeholder text here
+        intro_text = QLabel("Et totam earum ut soluta accusantium id veritatis recusandae nam voluptatum nesciunt et beatae officia. Quo numquam quam aut officiis possimus et dolores voluptatem et amet molestiae est itaque deserunt sed tenetur atque 33 fugit similique. Qui sunt voluptatem non dolorem quidem qui dolor nihil ut accusantium voluptas quo atque vero aut similique voluptas!Eum labore deserunt ut odit voluptate et distinctio tempora qui autem magni eum dicta delectus aut esse galisum. Quo quae eligendi ea aliquid nihil et neque enim At voluptatum consequuntur quo odit rerum et laboriosam ducimus? Lorem ipsum dolor sit amet. Ex vitae dolor et voluptatem veniam rem quia animi et maxime voluptatem aut tenetur ipsam eos voluptas enim eos alias velit. Eum quos voluptatem et fuga saepe sed incidunt odio aut inventore impedit et voluptates ducimus! Et corporis delectus sit quidem aliquam est quam sint aut deleniti possimus est impedit perferendis hic assumenda dolor est excepturi nobis.")  # Change placeholder text here
+        intro_text.setStyleSheet("font-size: 13px;")  # Change intro text font size here  # Change placeholder text here
         intro_text.setWordWrap(True)
 
         self.button_container = QVBoxLayout()
