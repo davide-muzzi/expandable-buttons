@@ -85,6 +85,7 @@ class MainWindow(QWidget):
 
         intro_text = QLabel("Et totam earum ut soluta accusantium id veritatis recusandae nam voluptatem nescuint... (shortened for brevity)")  # Change placeholder text here
         intro_text.setStyleSheet("font-size: 13px; padding: 5px 50px 20px 50px; color: white;")  # Change intro text color here  # Adjust intro text padding: top, right, bottom, left  # Change intro text font size here  # Change placeholder text here
+        intro_text.setAlignment(Qt.AlignmentFlag.AlignCenter)
         intro_text.setWordWrap(True)
 
         self.button_container = QVBoxLayout()
@@ -123,6 +124,17 @@ class MainWindow(QWidget):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+
+    # Load and apply custom font
+    from PyQt6.QtGui import QFontDatabase, QFont
+    font_id = QFontDatabase.addApplicationFont("MouldyCheeseRegular-WyMWG.ttf")  # Put your .ttf file in the same directory
+    if font_id != -1:
+        family = QFontDatabase.applicationFontFamilies(font_id)[0]
+        app_font = QFont(family, 10)  # 10 is base font size
+        app.setFont(app_font)
+    else:
+        print("⚠️ Failed to load custom font. Make sure 'YourFont.ttf' is in the same folder.")
+
     window = MainWindow()
     window.show()
     sys.exit(app.exec())
