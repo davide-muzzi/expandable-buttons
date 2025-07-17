@@ -92,17 +92,21 @@ class MainWindow(QWidget):
         self.button_container.setContentsMargins(20, 10, 20, 10)  # Adjust button container margins: left, top, right, bottom
         self.buttons = []
 
+        # Container layout that includes headline, intro text, and buttons
+        scroll_content_layout = QVBoxLayout()
+        scroll_content_layout.addWidget(headline)
+        scroll_content_layout.addWidget(intro_text)
+        scroll_content_layout.addLayout(self.button_container)
+
+        scroll_widget = QWidget()
+        scroll_widget.setLayout(scroll_content_layout)
+
         scroll_area = QScrollArea()
         scroll_area.setWidgetResizable(True)
-        scroll_widget = QWidget()
-        scroll_widget.setLayout(self.button_container)
         scroll_area.setWidget(scroll_widget)
 
         layout = QVBoxLayout()
-        layout.addWidget(headline)
-        layout.addWidget(intro_text)
         layout.addWidget(scroll_area)
-
         self.setLayout(layout)
 
         self.load_buttons()
