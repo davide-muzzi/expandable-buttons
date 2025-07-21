@@ -6,6 +6,14 @@ from PyQt6.QtWidgets import (
 )
 from PyQt6.QtCore import Qt, QPropertyAnimation, QEasingCurve, pyqtSlot
 
+def resource_path(filename):
+    if hasattr(sys, '_MEIPASS'):
+        return os.path.join(sys._MEIPASS, filename)
+    return os.path.join(os.path.abspath("."), filename)
+
+font_path = resource_path("MouldyCheeseRegular-WyMWG.ttf")
+json_path = resource_path("buttons.json")
+
 class ExpandableButton(QWidget):
     def __init__(self, label, description, parent):
         super().__init__()
@@ -112,7 +120,7 @@ class MainWindow(QWidget):
         self.load_buttons()
 
     def load_buttons(self):
-        json_path = os.path.join(os.path.dirname(__file__), "buttons.json")  # Update file name/path here if needed
+        json_path = resource_path("buttons.json")  # Update file name/path here if needed
         with open(json_path, "r", encoding="utf-8") as f:
             data = json.load(f)
 
